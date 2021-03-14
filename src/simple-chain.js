@@ -24,12 +24,7 @@ const chainMaker = {
   finishChain() {
     str =
       "( " +
-      this.s
-        .filter((el) => {
-          //console.log(el)
-          return !Object.is(el, undefined);
-        })
-        .join(" )~~( ") +
+      this.s.filter((el) => !Object.is(el, undefined)).join(" )~~( ") +
       " )";
 
     this.s = [];

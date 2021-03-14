@@ -10,7 +10,6 @@ module.exports = function createDreamTeat(arr) {
       )
       .sort()
       .forEach((v) => {
-        console.log(v);
         if (typeof v === "string") {
           n += v;
         }

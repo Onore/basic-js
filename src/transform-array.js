@@ -5,36 +5,34 @@ module.exports = function trasform(arr) {
     throw new Error("Not an Array!");
   }
 
-  return arr.flatMap((v, k, arr) => {
-    // First el
-    if (
-      k === 0 &&
-      (arr[k] === "--double-prev" || arr[k] === "--discard-prev")
-    ) {
-      return [];
-    }
-    // Last el
-    if (
-      k === arr.length - 1 &&
-      (arr[k] === "--double-next" || arr[k] === "--discard-next")
-    ) {
-      return [];
+  const resArr = [];
+  arr.forEach((el, key, ar) => {
+    if (ar[key - 1] === "--double-next") {
+      resArr.push(el);
     }
 
-    if (v === "--double-next") {
-      return (v = arr[k + 1]);
-    }
-    if (v === "--double-prev") {
-      return (v = arr[k - 1]);
-    }
-    if (v === "--discard-next") {
-      return (arr[k + 1] = []);
-    }
-    if (arr[k + 1] === "--discard-prev") {
-      arr[k + 1] = [];
-      return [];
+    // Double If start array or prev el != delete next
+    if (ar[key + 1] === "--double-prev" && ar[key - 1] !== "--discard-next") {
+      resArr.push(el);
     }
 
-    return v;
+    // Skip Control sequences
+    if (ar[key] === "--double-prev" || ar[key] === "--double-next") {
+      return;
+    }
+
+    if (
+      ar[key] === "--discard-prev" ||
+      ar[key + 1] === "--discard-prev" ||
+      ar[key] === "--discard-next" ||
+      ar[key - 1] === "--discard-next"
+    ) {
+      return;
+    }
+
+    //console.log("add2:", el);
+    resArr.push(el);
   });
+
+  return resArr;
 };

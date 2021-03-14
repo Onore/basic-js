@@ -8,9 +8,8 @@ module.exports = function countCats(arr) {
       if (v == "^^") {
         num++;
       }
-      console.log(v);
     });
   });
-  console.log(num);
+  //console.log(num);
   return num;
 };

@@ -1,157 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class VigenereCipheringMachine {
+        encrypt() {
+          throw new CustomError("Not implemented");
+          // remove line with error and write your code here
+        }
+        decrypt() {
+          throw new CustomError("Not implemented");
+          // remove line with error and write your code here
+        }
+      }
 
-// let arr = ['Peter', 'Adam', 'Gary', 'Bobby', 'Philip', 'Andrea', 'Evelyn', 'Evelyn', 'Kimberly', 'Denise'];
-//     console.log(createDreamTeat(arr));
+      const directMachine = new VigenereCipheringMachine();
 
-//     function createDreamTeat(arr) {
-//   let n = '';
+      console.log(directMachine.encrypt("attack at dawn!", "alphonse"));
 
-//   if (Array.isArray(arr)) {
-//     arr.flatMap(v => (typeof (v) === 'string') ? v.trim()[0].toLocaleUpperCase() : [])
-//       .sort()
-//       .forEach(v => {
-//         console.log(v);
-//         if (typeof (v) === 'string') {
-//           n += v;
-//         }
-//       });
-//   }
-
-//   return n.length > 0 ? n : false;
-// };
-
-
-
-
-
-// const chainMaker = (function () {
-//   let s = [];
-
-//   function getLength() {
-//     return s.length;
-//   }
-
-//   function addLink(n) {
-//     //s = s + n;
-//     s.push(n);
-//     return this;
-//   }
-
-//   function removeLink(n) {
-//     if(isNaN(n) || s[n-1] === undefined || !Number.isInteger(n)) {
-//       throw new Error();
-//     }
-//     s[n-1] = undefined;
-//     return this;
-//   }
-//   function reverseChain() {
-//     //s = s.split('').reverse().join('');
-//     s = s.reverse();
-//     return this;
-//   }
-//   function finishChain() {
-//     return '( ' + s.filter(el => el !== undefined).join(' )~~( ') + ' )';
-//   }
-
-//   return {
-//     getLength,
-//     addLink,
-//     removeLink,
-//     reverseChain, 
-//     finishChain,
-//   }
-// })();
-
-
-// //console.log(chainMaker.addLink(2).addLink(1).getLength());
-// console.log(chainMaker.reverseChain());
-// //console.log(chainMaker.addLink(1).addLink(2).addLink(3).removeLink(0));
-
-
-/*
-[ 1, 2, 3, 4, 5, [ 1, [] ] ]
-
-class DepthCalculator {
-  calculateDepth(arr) {
-    console.log(arr);
-    // true if arr has nested arr
-    //arr.filter(el=>Array.isArray(el)).length > 0
-    if (!Array.isArray(arr)) {
-      return 0;
-    }
-    let i = 1;
-    while (arr.filter((el) => Array.isArray(el)).length > 0) {
-      i++;
-      arr = arr.reduce((acc, el) => acc.concat(el), []);
-      if (i > 35) break;
-    }
-    return i;
-  }
-};
-let depthCalc = new DepthCalculator();
-console.log(depthCalc.calculateDepth([ 1, 2, 3, 4, 5, [ 1, [] ] ])); // => 1
-*/
-
-const chainMaker = {
-  s: [],
-  getLength() {
-     return this.s.length;
-  },
-  addLink(n) {
-      n === null ? this.s.push('null') : this.s.push(n);
-     return this;
-  },
-  removeLink(n) {
-     if(isNaN(n) || this.s[n-1] === undefined || !Number.isInteger(n)) {
-      console.log(this.s) 
-      throw new Error(this.s);
-     }
-     this.s.splice(n-1,1);
-     console.log(this.s) 
-     return this;
-  },
-  reverseChain() {
-     this.s = this.s.reverse();
-     return this;
-  },
-  finishChain() {
-    str = '( ' + this.s.filter(el => 
-    {
-      //console.log(el)
-      return !Object.is(el, undefined);
-    }).join(' )~~( ') + ' )';
-    
-    this.s = [];
-    return str;
-  }
-};
-
-//console.log(chainMaker.addLink(1).addLink(2).removeLink(2).reverseChain().finishChain());
-console.log(        chainMaker
-          .addLink(3.14)
-          .addLink(1)
-          .addLink({ 0: "first", 1: "second", length: 2 })
-          .removeLink(1)
-          .removeLink(1)
-          .addLink("DEF")
-          .addLink({ 0: "first", 1: "second", length: 2 })
-          .removeLink(2)
-          .finishChain());
-//console.log(chainMaker.addLink(function() {}).finishChain());
-
-
-
-  </script>
-</body>
+      function checkConcatenatedSum(n, times) {
+        console.log(n, times);
+        return (
+          Math.abs(n) ===
+          [...n.toString()]
+            .map((el) => el.repeat(times))
+            .reduce((ac, el) => {
+              if (el === "---") {
+                return "";
+              } else {
+                return +ac + +el;
+              }
+            }, 0)
+        );
+      }
+    </script>
+  </body>
 </html>
-
